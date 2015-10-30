@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  .wrapper
+    //h1(data-i18n='buttons.login')
+    //p=t('markup.login')
+
+    form.form-horizontal(action='/login', method='POST')
+      fieldset
+        #legend
+          legend(data-i18n='buttons.login')
+        .control-group
+          // Username
+          label.control-label(for='username', data-i18n='markup.username')
+          .controls
+            input#username.input-xlarge(type='text', name='username', placeholder='')
+        .control-group
+          // Password
+          label.control-label(for='password', data-i18n='markup.password')
+          .controls
+            input#password.input-xlarge(type='password', name='password', placeholder='')
+        .control-group
+          // Button
+          .controls
+            button.btn.btn-success(data-i18n='buttons.login')
+
+
+//
+    form(action='/login', method='post', name='loginForm')
+      div(data-role='fieldcontain')
+        fieldset(data-role='controlgroup')
+          label(for='username', data-i18n='markup.username')
+          input(id='username',type='text',value='',placeholder='',name='username')
+      div#passworddiv(data-role='fieldcontain')
+        fieldset(data-role='controlgroup')
+          label(for='password', data-i18n='markup.password')
+          input(id='password',type='password',value='',placeholder='',name='password')
+      div(data-role='fieldcontain')
+        button(type='submit',data-transition='fade', data-theme='c', data-i18n='buttons.login')

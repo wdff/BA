@@ -1,0 +1,37 @@
+extends layout
+
+
+block content
+  // use the Oid as var
+  script(type='text/javascript').
+    var problemOid = "!{Oid}"
+
+  .col-md-1
+  .wrapper.col-md-10
+    h1= title
+
+
+
+
+    .col-md-2
+      a(href='/') back
+    .col-md-8
+      p.problem #{problemString}
+      input#solution.col-md-12(data-i18n='[placeholder]markup.solution', autofocus="autofocus")
+      .btn-group-justified
+        .btn-group
+          button.btn.btn-default#help(data-i18n='buttons.help')
+        .btn-group
+          button.btn.btn-success#submit(data-i18n='buttons.submit')
+        .btn-group
+          button.btn.btn-default#next(data-i18n='buttons.nextProblem')
+      #helpDiv
+        p this is the help blablabalb aaaaaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaabvg efg ewf gfwe gwr gr ger rg grw wg
+    .col-md-2
+      #time
+        span#minutes
+        span#seconds
+
+
+
+  .col-md-1

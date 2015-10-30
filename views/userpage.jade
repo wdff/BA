@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  .wrapper
+    h1= title
+
+    a(href='/') back
+
+    h2 #{user.username}
+
+    h3 training results
+    #totalStats
+      #totalAttempts
+        span(data-i18n='markup.totalAttempts')
+        | : &nbsp;
+        span #{lvl0taken}
+
+      #correctAttempts
+        span(data-i18n='markup.correctAttempts')
+        | : &nbsp;
+        span #{lvl0correct}
+        span= ' (' + Math.floor((correct/taken)*100) + '%)'
+
+      #timeTaken
+        span(data-i18n='markup.avgTimeTaken')
+        | : &nbsp;
+        span #{lvl0avgTimeTaken} s
+
+
+    pre #{stats}

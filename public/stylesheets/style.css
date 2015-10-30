@@ -1,0 +1,116 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #F2F3DD;
+}
+
+a {
+  color: #199ACE;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  /* background-color: yellow; */
+}
+
+
+
+/* ========== FRONT PAGE ========== */
+.button {
+  display: block;
+  color:#444;
+  border:1px solid #CCC;
+  /* border-radius: 3px; */
+  background: rgba(210, 210, 210, 0.62);
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+  margin: 0px;
+  cursor:pointer;
+  vertical-align:middle;
+  text-align: center;
+}
+
+.button:hover {
+  background: #EAEAEA;
+}
+
+.frontbutton {
+  /* height: 150px; */
+  padding: 15px;
+}
+
+img.buttonPic {
+  /* width: 95%; */
+}
+
+
+.button > a:active {
+  color: #220000;
+  /*box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);*/
+}
+
+a:hover {
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.langSelect {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.wrapper {
+  padding: 20px;
+  background-color: rgba(227, 208, 131, 0.8);
+}
+
+p.loggedInAs {
+  position: absolute;
+  top: 1.5%;
+  right: 6.6%;
+}
+
+
+/* ========== TRAINING PAGE ========== */
+p.problem {
+  font-size: 6.9em;
+  font-size: 8.5vw;
+}
+
+input#solution {
+  line-height: 2em;
+  border-radius: 0.1em;
+  font-size: 4em;
+  transition: background-color 1s;
+}
+
+.correctSolution {
+  background-color: lightgreen;
+}
+
+.incorrectSolution {
+  background-color: indianred;
+}
+
+div#helpDiv {
+  display: none;
+}
+
+div#time {
+  float:right;
+}
+
+.button.trainingLevelButton {
+  text-align: left;
+}
+
+button.trainingLevelButton:hover {
+  opacity: 1;
+}
+
+span.trainingLevel {
+  font-size: 3em;
+}
+
+/* =========== REGISTER PAGE ========== */
+.control-group {
+  display: inline-block;
+}
