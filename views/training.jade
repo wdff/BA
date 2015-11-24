@@ -6,16 +6,26 @@ block content
   script(type='text/javascript').
     var problemOid = "!{Oid}"
 
-  .col-md-1
-  .wrapper.col-md-10
+  .indicator.small
+    .visible-xs
+      p  xs
+    .visible-sm
+      p sm
+    .visible-md
+      p md
+    .visible-lg
+      p lg
+
+
+
+  .wrapper.col-md-10.col-md-offset-1
+    a(href='/', data-i18n="buttons.back")
     h1= title
 
 
 
 
-    .col-md-2
-      a(href='/') back
-    .col-md-8
+    .col-md-8.col-md-offset-2
       p.problem #{problemString}
       input#solution.col-md-12(data-i18n='[placeholder]markup.solution', autofocus="autofocus")
       .btn-group-justified
@@ -31,7 +41,3 @@ block content
       #time
         span#minutes
         span#seconds
-
-
-
-  .col-md-1

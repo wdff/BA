@@ -1,30 +1,81 @@
 extends layout
 
+
+
 block content
-  .wrapper
+
+  script(type='text/javascript').
+    var statData = !{JSON.stringify(stats)}
+
+  script(src='//d3js.org/d3.v3.js' charset='utf-8')
+  script(src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js")
+  script(src='/javascripts/userpage.js', type='text/javascript')
+  .wrapper.col-md-10.col-md-offset-1
     h1= title
 
-    a(href='/') back
+
+
+    a(href='/', data-i18n="buttons.back")
 
     h2 #{user.username}
 
-    h3 training results
+    h3(data-i18n="markup.statistics")
     #totalStats
+
       #totalAttempts
         span(data-i18n='markup.totalAttempts')
         | : &nbsp;
-        span #{lvl0taken}
+        span#totalAmount
 
       #correctAttempts
         span(data-i18n='markup.correctAttempts')
         | : &nbsp;
-        span #{lvl0correct}
-        span= ' (' + Math.floor((correct/taken)*100) + '%)'
+        span#totalCorrect
+        | &nbsp;
+        span#correctPercent
 
       #timeTaken
         span(data-i18n='markup.avgTimeTaken')
         | : &nbsp;
-        span #{lvl0avgTimeTaken} s
+        span#avgTime
+
+    br
+    br
+    #statButtons
+      p(data-i18n="markup.setTime")
+      .btn-group-justified
+        .btn-group
+          button.btn.btn-default.timeSpanBtn
+            span.number 7
+            | &nbsp;
+            span(data-i18n="buttons.days")
+        .btn-group
+          button.btn.btn-default.timeSpanBtn
+            span.number 30
+            | &nbsp;
+            span(data-i18n="buttons.days")
+        .btn-group
+          button.btn.btn-default.timeSpanBtn
+            span.number 90
+            | &nbsp;
+            span(data-i18n="buttons.days")
 
 
-    pre #{stats}
+    #statsByLevel
+      //each level, i in stats
+      //  .levelStats
+      //    p #{i}
+      //    p #{level}
+      //    //script(type='text/javascript').
+      //      d3.select(".levelStats").selectAll('p').data(stats[1].byDays).enter().append("p").text("lel");
+
+    //#rect-demo
+
+    pre #{JSON.stringify(stats)}
+
+    //script(type='text/javascript').
+    //  //console.log(statData);
+    //  console.log('con: ');
+    //  console.log(JSON.stringify(statData));
+
+

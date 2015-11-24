@@ -29,11 +29,18 @@ function randNum(maxSize) {
  */
 module.exports.makeProblem = function(level) {
 
+  var maxNumberSize = 10;
+
+    if (level == 2) {
+      maxNumberSize = 100;
+    }
+
+
     if (level >= 1) {               // TODO zurücksetzen auf ==1
         var problem = {};
 
         var amountOfOperations = 2;
-        var maxNumberSize = 10;
+
 
         //special test variables for level 1 to exclude negative results
         var num1 = randNum(maxNumberSize);

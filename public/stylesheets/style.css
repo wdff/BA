@@ -1,6 +1,6 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 3em;
+  font: 2em "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #F2F3DD;
 }
 
@@ -11,7 +11,21 @@ a {
   /* background-color: yellow; */
 }
 
+.text-center {
+  text-align: center;
+}
 
+/*h1::before {*/
+  /*content: "///";*/
+/*}*/
+
+
+
+/* for debugging bootstrap */
+.indicator {
+  position: absolute;
+  z-index: 5;
+}
 
 /* ========== FRONT PAGE ========== */
 .button {
@@ -21,7 +35,7 @@ a {
   /* border-radius: 3px; */
   background: rgba(210, 210, 210, 0.62);
   box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
-  margin: 0px;
+  /*margin: 0px;*/
   cursor:pointer;
   vertical-align:middle;
   text-align: center;
@@ -32,12 +46,12 @@ a {
 }
 
 .frontbutton {
-  /* height: 150px; */
+  min-height: 100px;
   padding: 15px;
 }
 
 img.buttonPic {
-  /* width: 95%; */
+  margin: 0 auto;
 }
 
 
@@ -58,14 +72,14 @@ a:hover {
 }
 
 .wrapper {
-  padding: 20px;
+  padding-bottom: 20px;
   background-color: rgba(227, 208, 131, 0.8);
 }
 
 p.loggedInAs {
   position: absolute;
-  top: 1.5%;
-  right: 6.6%;
+  top: 1em;
+  right: 6em;
 }
 
 
@@ -73,13 +87,15 @@ p.loggedInAs {
 p.problem {
   font-size: 6.9em;
   font-size: 8.5vw;
+  text-align: center;
 }
 
 input#solution {
   line-height: 2em;
   border-radius: 0.1em;
-  font-size: 4em;
+  /*font-size: 4em;*/
   transition: background-color 1s;
+  width: 100%;
 }
 
 .correctSolution {
@@ -96,6 +112,7 @@ div#helpDiv {
 
 div#time {
   float:right;
+  opacity: 0;
 }
 
 .button.trainingLevelButton {
@@ -107,10 +124,70 @@ button.trainingLevelButton:hover {
 }
 
 span.trainingLevel {
-  font-size: 3em;
+  font-size: 1em;
+  margin-left: 33%;
 }
+
+.trainingButtonPic {
+  height: 80px;
+}
+
 
 /* =========== REGISTER PAGE ========== */
 .control-group {
   display: inline-block;
 }
+
+
+/* =========== USER PAGE ===============*/
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.grid {
+  stroke: #757575;
+  opacity: 0.7;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
+.tip {
+  line-height: 1;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+
+/* =========== MEDIA QUERIES ========== */
+/* xs */
+@media(max-width:767px){
+  h1 {
+    font-size: 1em;
+  }
+
+  p {
+    font-size: 0.8em;
+  }
+
+}
+
+/* sm */
+@media(min-width:768px){
+  img.buttonPic{
+    height: 225px;
+  }
+}
+
+/* md */
+@media(min-width:992px){}
+
+/* lg */
+@media(min-width:1200px){}

@@ -122,7 +122,7 @@ passport.use(new LocalStrategy({
 
 app.use('/', routes);
 app.use('/users', user);
-app.use('/training', training)
+app.use('/training', training);
 
 //i18n.registerAppHelper(app);
 

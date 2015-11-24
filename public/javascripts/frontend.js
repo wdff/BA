@@ -3,7 +3,7 @@ $(document).ready(function() {
     // ========================== TRANSLATION ===================== //
 
 
-    var toTranslate = 'p, a, h1, label, button, input, span';
+    var toTranslate = 'p, a, h1, h2, h3, label, button, input, span';
     var checkSolutionURL = "./checkSolution";
 
     $.i18n.init({
@@ -35,7 +35,7 @@ $(document).ready(function() {
 
 
     var levelButtons = $('.trainingLevelButton');
-    console.dir(levelButtons);
+    //console.dir(levelButtons);
     var levelButtonsAmount = levelButtons.length;
     var step = 255 / levelButtonsAmount - 1;
 
@@ -109,12 +109,21 @@ $(document).ready(function() {
 
     var sec = 0;
     function pad ( val ) { return val > 9 ? val : "0" + val; }
+    function colorByTime(time) {
+        $('#time').css('opacity', function() {
+            return time / 60;
+        });
+    }
+
     var timer = setInterval( function(){
-        $("#seconds").html(pad(++sec%60));
+        var seconds = $("#seconds");
+        seconds.html(pad(++sec%60));
         if (sec == 59) {
             clearInterval(timer);
-            $('#seconds').html('60');
+            seconds.html('60');
+            seconds.css('color', 'red');
         }
+        colorByTime(sec);
     }, 1000);
 
     function buildAnswer(solution, time, Oid) {
