@@ -19,14 +19,15 @@ block content
 
 
   .wrapper.col-md-10.col-md-offset-1
-    a(href='/', data-i18n="buttons.back")
+    a(href='/training/', data-i18n="buttons.back")
     h1= title
 
 
 
 
-    .col-md-8.col-md-offset-2
+    .problemContainer.col-md-8.col-md-offset-2
       p.problem #{problemString}
+      p.realSolution
       input#solution.col-md-12(data-i18n='[placeholder]markup.solution', autofocus="autofocus")
       .btn-group-justified
         .btn-group

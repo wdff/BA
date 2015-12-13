@@ -30,8 +30,29 @@ $(document).ready(function() {
     });
 
 
+    $('.example').each(
+      function() {
+          // replaces all "*" in problem strings with HTML entities
+          $(this).html($(this).text().replace(/\*/gm,"&times;"));
+      }
+
+    );
+
+
 
     // ========================== TRAINING ===================== //
+
+
+
+
+
+    var path = window.location.pathname;
+    console.log(path);
+
+    // replace sqrt(xx) with HTML entities
+    var sqrtSolution = $('p.problem').text();
+    $('p.problem').html(sqrtSolution.replace(/sqrt\((\d+)\)/gm, "&radic;<span class='root'>$1</span>"));
+
 
 
     var levelButtons = $('.trainingLevelButton');
@@ -51,6 +72,20 @@ $(document).ready(function() {
     });
 
 
+    var setBodyScale = function () {
+
+        var scaleSource = $('.problemContainer').width(), // could be any div
+          scaleFactor = 0.055,
+          maxScale = 500,
+          minScale = 75; //Tweak these values to taste
+
+        var fontSize = (scaleSource * scaleFactor) - 8; //Multiply the width of the body by the scaling factor:
+
+        if (fontSize > maxScale) fontSize = maxScale;
+        if (fontSize < minScale) fontSize = minScale; //Enforce the minimum and maximums
+
+        $('html').css('font-size', fontSize + '%'); // or em
+    }
 
 
 
@@ -85,9 +120,10 @@ $(document).ready(function() {
         clearInterval(timer);
 
         //disable submit button
-        $('button#submit').prop('disabled', true);
-        //disable keydown
-        //$('input#solution').unbind('keydown');
+        $('button#submit').prop('disabled', true).removeClass("btn-success");
+
+        $('button#next').addClass("btn-success");
+
 
         $.ajax({
             url: url,
@@ -99,7 +135,14 @@ $(document).ready(function() {
                     $('#solution').addClass('correctSolution');
                     console.log("Solution " + data.solution + " was correct");
                 } else {
+
                     var correctSolution = result.correctSolution;
+
+                    //show correct solution as overlay
+                    $('p.realSolution').text(correctSolution).fadeToggle('slow').on('click', function() {
+                        $(this).fadeToggle("slow");
+                    });
+
                     $('#solution').addClass('incorrectSolution');
                     console.log("Solution " + data.solution + " was wrong. Correct solution is " + correctSolution);
                 }

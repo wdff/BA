@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var totalStats = statData.shift();  //seperate total stats from stats-by-level
+  var totalStats = statData.shift();  //seperate total stats (level[0] from stats-by-level
 
   var tickValues = {
     7: [0, 1, 2, 3, 4, 5, 6, 7],
@@ -8,12 +8,20 @@ $(document).ready(function() {
     90: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
   };
 
+  function calculatePercent(correct, taken) {
+    if (taken == 0) {
+      return 0;
+    } else {
+      return Math.floor((correct / taken) * 100);
+    }
+
+  }
+
   $('span#totalAmount').text(totalStats.amountTaken);
   $('span#totalCorrect').text(totalStats.amountCorrect);
   $('span#correctPercent')
-    .text('(' + Math.floor(
-      (totalStats.amountCorrect / totalStats.amountTaken) * 100)
-    + ')%');
+    .text('(' + calculatePercent(totalStats.amountCorrect, totalStats.amountTaken)
+    + '%)');
   $('span#avgTime').text(totalStats.avgTimeTaken + 's');
 
 

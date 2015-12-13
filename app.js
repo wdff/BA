@@ -36,9 +36,10 @@ var users = require('./models/users'); // USER DB
 var app = express();
 
 
-var user = require('./routes/users');  // USER ROUTE
-var routes = require('./routes/index');
-var training = require('./routes/training');
+var user      = require('./routes/users');  // USER ROUTE
+var routes    = require('./routes/index');
+var training  = require('./routes/training');
+var admin     = require('./routes/admin');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -123,6 +124,7 @@ passport.use(new LocalStrategy({
 app.use('/', routes);
 app.use('/users', user);
 app.use('/training', training);
+app.use('/admin', admin);
 
 //i18n.registerAppHelper(app);
 

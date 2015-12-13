@@ -1,0 +1,32 @@
+extends layout
+
+
+
+block content
+
+  //script(type='text/javascript').
+    var statData = !{JSON.stringify(stats)}
+
+  script(src='//d3js.org/d3.v3.js' charset='utf-8')
+  script(src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js")
+  //script(src='/javascripts/userpage.js', type='text/javascript')
+  .wrapper.col-md-10.col-md-offset-1
+    h1= title
+
+
+
+    a(href='/', data-i18n="buttons.back")
+
+    h2 #{user.username}
+      span &nbsp; - &nbsp;
+      span(data-i18n="markup.adminArea")
+
+
+    p #{studentCount}
+      span &nbsp;
+      span(data-i18n="markup.registeredUsers")
+
+    p #{problemCount}
+      span &nbsp;
+      span(data-i18n="markup.solvedProblems")
+    a(href='/admin/userstats/' data-i18n="markup.userStats")

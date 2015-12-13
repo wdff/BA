@@ -1,0 +1,25 @@
+extends layout
+
+
+
+block content
+
+  //script(type='text/javascript').
+    var statData = !{JSON.stringify(stats)}
+
+  script(src='//d3js.org/d3.v3.js' charset='utf-8')
+  script(src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js")
+  //script(src='/javascripts/userpage.js', type='text/javascript')
+  .wrapper.col-md-10.col-md-offset-1
+    h1= title
+
+
+
+    a(href='/admin/', data-i18n="buttons.back")
+    br
+    br
+    br
+    .userNames
+      each name in userNames
+        a(href='/admin/userstats/#{name._id}') #{name.username} (#{name.firstName} #{name.lastName})
+        p
