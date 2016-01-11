@@ -11,7 +11,9 @@ router.get('/', function(req, res) {
     res.render('training-front', {user: req.user, title: 'Training'});
 });
 
-router.get('/:level', function(req, res) {
+
+
+router.get('/:level/', function(req, res) {
 
     var level               = req.params.level;
     var currentProblem      = problemMaker.makeProblem(level);
@@ -32,6 +34,9 @@ router.get('/:level', function(req, res) {
 
     console.log('problem created');
 
+    console.dir(currentProblem);
+
+
     problem.save(function(err, result) {
         if (err) {console.log(err, result);}
         else {
@@ -43,7 +48,8 @@ router.get('/:level', function(req, res) {
                title            : 'Training',
                level            : level,
                Oid              : problemOid,
-               problemString    : problemString
+               problemString    : problemString,
+               problemObject    : JSON.stringify(currentProblem)
            });
         }
     });
@@ -81,7 +87,7 @@ router.post('/:level/checkSolution', function checkSolution(req, res) {
             wasSolved = false;
             res.json({
                 correctSolution: problemSolution
-                //TODO hints for solving
+                                                                            //TODO hints for solving
             })
         }
 
@@ -99,25 +105,6 @@ router.post('/:level/checkSolution', function checkSolution(req, res) {
     });
 
 
-
-
-
-
-
-
-
-
-    //if wrong: res.send("wrong");
 });
 
-/*
- router.post('/login',
- passport.authenticate('local'),
- function(req, res) {
- // If this function gets called, authentication was successful.
- // `req.user` contains the authenticated user.
- console.log("Auth successful");
- res.redirect('/users/' + req.user.username);
- });
- */
 module.exports = router;

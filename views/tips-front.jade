@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  .wrapper.col-xs-12.col-md-12.col-lg-10.col-lg-offset-1
+    h1= title
+
+    a(href='/', data-i18n="buttons.back")
+    p(data-i18n="markup.tipsHeading")
+
+
+
+    a(href='/tips/addition/0/')
+      .button.traininglevelbutton.col-xs-12.col-md-8.col-md-offset-2
+        img.trainingButtonPic(src="/images/plus.png")
+        span.trainingLevel
+          span(data-i18n='buttons.tipsFor')
+          | &nbsp;
+          span(data-i18n='buttons.addition')
+
+    a(href='/tips/subtraction/0/')
+      .button.traininglevelbutton.col-xs-12.col-md-8.col-md-offset-2
+        img.trainingButtonPic(src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/minus-.png")
+        span.trainingLevel
+          span(data-i18n='buttons.tipsFor')
+          | &nbsp;
+          span(data-i18n='buttons.subtraction')
+
+    a(href='/tips/multiplication/0/')
+      .button.traininglevelbutton.col-xs-12.col-md-8.col-md-offset-2
+        img.trainingButtonPic(src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/multiply-.png")
+        span.trainingLevel
+          span(data-i18n='buttons.tipsFor')
+          | &nbsp;
+          span(data-i18n='buttons.multiplication')
+
+
+    a(href='/tips/division/0/')
+      .button.traininglevelbutton.col-xs-12.col-md-8.col-md-offset-2
+        img.trainingButtonPic(src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/divide-.png")
+        span.trainingLevel
+          span(data-i18n='buttons.tipsFor')
+          | &nbsp;
+          span(data-i18n='buttons.division')
+
+    a(href='/tips/fraction/0/')
+      .button.traininglevelbutton.col-xs-12.col-md-8.col-md-offset-2
+        img.trainingButtonPic(src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/divide-.png")
+        span.trainingLevel
+          span(data-i18n='buttons.tipsFor')
+          | &nbsp;
+          span(data-i18n='buttons.fraction')
+
+    a(href='/tips/sqrt/0/')
+      .button.traininglevelbutton.col-xs-12.col-md-8.col-md-offset-2
+        img.trainingButtonPic(src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/square_root-.png")
+        span.trainingLevel
+          span(data-i18n='buttons.tipsFor')
+          | &nbsp;
+          span(data-i18n='buttons.sqrt')

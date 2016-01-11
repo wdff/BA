@@ -1,20 +1,23 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var express       = require('express');
+var path          = require('path');
+var favicon       = require('serve-favicon');
+var logger        = require('morgan');
+var cookieParser  = require('cookie-parser');
+var bodyParser    = require('body-parser');
+var slashes       = require('connect-slashes');
 
-var session = require('express-session');
-var i18n = require('i18next');
-var passport = require('passport');
+var session       = require('express-session');
+var i18n          = require('i18next');
+var passport      = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-var hash = require('./helpers/hash.js');
-var config = require('./config/config.js');
+var hash          = require('./helpers/hash.js');
+var config        = require('./config/config.js');
 
 
-var users = require('./models/users'); // USER DB
+var users         = require('./models/users'); // USER DB
+
+
 /*
  i18n.init({
 
@@ -40,6 +43,7 @@ var user      = require('./routes/users');  // USER ROUTE
 var routes    = require('./routes/index');
 var training  = require('./routes/training');
 var admin     = require('./routes/admin');
+var tips      = require('./routes/tips');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,6 +59,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(i18n.handle);
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(slashes());
+
 
 app.use(session({
       secret: 'mctIsTheBest',
@@ -115,18 +121,11 @@ passport.use(new LocalStrategy({
 );
 
 
-
-
-
-
-
-
 app.use('/', routes);
 app.use('/users', user);
 app.use('/training', training);
 app.use('/admin', admin);
-
-//i18n.registerAppHelper(app);
+app.use('/tips', tips);
 
 
 // catch 404 and forward to error handler

@@ -1,0 +1,17 @@
+extends ../tipsLayout
+block tipContent
+    - var path = "[html]hints.*.1."
+    h1(data-i18n=path + "0")
+    .tipsFrame
+        .tipsText
+            p(data-i18n=path + "1")
+            p(data-i18n=path + "2")
+        .tipsExample
+            p(data-i18n=path + "3")
+            p(data-i18n=path + "4")
+            p(data-i18n=path + "5")
+            p(data-i18n=path + "6")
+        .tipsText
+            p(data-i18n=path + "7")
+        .tipsExample
+            p(data-i18n=path + "8")

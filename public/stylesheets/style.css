@@ -1,6 +1,6 @@
 body {
   padding-top: 3em;
-  font: 2em "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 2em "Roboto", Helvetica, Arial, sans-serif;
   background-color: #F2F3DD;
 }
 
@@ -15,11 +15,11 @@ a {
   text-align: center;
 }
 
-/*h1::before {*/
-  /*content: "///";*/
-/*}*/
 
-
+h1 {
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
 
 /* for debugging bootstrap */
 .indicator {
@@ -72,6 +72,7 @@ a:hover {
 }
 
 .wrapper {
+  border-radius: 7px;
   padding-bottom: 20px;
   background-color: rgba(227, 208, 131, 0.8);
 }
@@ -103,9 +104,10 @@ p.realSolution {
 
 p.problem,
 p.realSolution {
-  font-size: 6.9em;
-  font-size: 8.5vw;
+  font-size: 5em;
+  font-size: 4.5vw;
   text-align: center;
+  font-family: monospace;
 }
 
 span.root {
@@ -135,6 +137,7 @@ div#helpDiv {
 div#time {
   float:right;
   opacity: 0;
+  font-family: monospace;
 }
 
 .button.trainingLevelButton {
@@ -163,12 +166,48 @@ span.trainingLevel {
 
 /* =========== USER PAGE ===============*/
 .bar {
-  fill: steelblue;
+  fill: #53dd00;
 }
 
-.bar:hover {
-  fill: brown;
+.barHighlight {
+    background-color: #53dd00;
+    border-radius: 5px;
 }
+
+.levelTotalCorrect {
+  color: #53dd00;
+}
+
+
+.bar:hover {
+  fill: #5ab82f;
+}
+
+.timeBar {
+  fill: #ff857b;
+}
+
+.timeBarHighlight {
+    background-color: #ff857b;
+    border-radius: 5px;
+}
+
+.levelAvgTime {
+  color: #ff857b;
+}
+
+
+.timeBar:hover {
+  fill: #c56c6c;
+}
+
+.userpageIntro {
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+
 
 .grid {
   stroke: #757575;
@@ -179,13 +218,131 @@ span.trainingLevel {
   stroke-width: 0;
 }
 
-.tip {
+.tip,
+.timeTip {
   line-height: 1;
   padding: 12px;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 2px;
 }
+
+.levelSummary {
+  position: absolute;
+  right: 0;
+  width: 20%;
+}
+
+.levelSummary > p {
+  margin-top: 28%;
+}
+
+.summaryStatIcon {
+  margin-right: 10px;
+}
+
+/* =========== TIPS PAGES ========== */
+span.half {
+  opacity: 0.5;
+}
+
+.tipsFrame {
+  font-size: 1.2em;
+  padding: 20px 10px;
+  background-color: rgba(255, 249, 234, 0.56);
+  border-radius: 5px;
+  font-family: 'Kalam';
+}
+
+.tipsText {
+  /*margin-bottom: 7%;*/
+}
+
+.tableLeft {
+  width: 30%;
+  float:left;
+}
+
+.tableRigfht {
+  float:right;
+}
+
+.tipsExample {
+  font-size: 1.5em;
+}
+
+.tipContent {
+  margin-top: 25px;
+}
+
+.highlight1 {
+  background-color: rgba(42, 180, 53, 0.35);
+  border-radius: 5px;
+}
+
+.highlight2 {
+  background-color: rgba(80, 120, 255, 0.34);
+  border-radius: 5px;
+}
+
+.highlight3 {
+  background-color: rgba(255, 55, 74, 0.34);
+  border-radius: 5px;
+}
+
+.highlight4 {
+    background-color: rgba(255, 47, 244, 0.34);
+    border-radius: 5px;
+}
+
+.highlight5 {
+    background-color: rgba(163, 224, 255, 0.34);
+    border-radius: 5px;
+}
+
+.fraction {
+    display: inline-block;
+    text-align: center;
+}
+.fraction,
+.top,
+.bottom {
+    padding-left: 2px;
+    padding-right: 2px;
+    vertical-align: top;
+}
+
+.top {
+    border-bottom: 5px solid black;
+    border-radius: 5px 5px 0 0;
+}
+
+.bottom {
+    border-radius: 0 0 5px 5px;
+    display: block;
+}
+.vertical {
+    display: block;
+    margin-top: 1em;
+}
+
+/* =========== LOADING SPINNER ========== */
+.glyphicon.spinning {
+  animation: spin 1s infinite linear;
+  -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg); }
+  to { transform: scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spin2 {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+
+
 
 
 /* =========== MEDIA QUERIES ========== */
@@ -197,6 +354,14 @@ span.trainingLevel {
 
   p {
     font-size: 0.8em;
+  }
+
+  div.levelSummary {
+    font-size: 0.7em;
+  }
+
+  .levelSummary > p {
+    margin-top: 5%;
   }
 
 }

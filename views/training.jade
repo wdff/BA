@@ -1,10 +1,15 @@
 extends layout
 
+block extraJS
+  script(src='/javascripts/trainingLayout.js', type='text/javascript')
+  script(src='/javascripts/trainingHelp.js', type='text/javascript')
+  script(src='/javascripts/replaceStars.js', type='text/javascript')
+  script(src='/javascripts/replaceSqrt.js', type='text/javascript')
 
 block content
   // use the Oid as var
-  script(type='text/javascript').
-    var problemOid = "!{Oid}"
+  script(type='text/javascript') var problemOid = "!{Oid}";
+  script(type='text/javascript') var problemObj = !{problemObject};
 
   .indicator.small
     .visible-xs
@@ -22,11 +27,9 @@ block content
     a(href='/training/', data-i18n="buttons.back")
     h1= title
 
-
-
-
     .problemContainer.col-md-8.col-md-offset-2
-      p.problem #{problemString}
+      //p.problem #{problemString}
+      p.problem
       p.realSolution
       input#solution.col-md-12(data-i18n='[placeholder]markup.solution', autofocus="autofocus")
       .btn-group-justified
@@ -36,8 +39,9 @@ block content
           button.btn.btn-success#submit(data-i18n='buttons.submit')
         .btn-group
           button.btn.btn-default#next(data-i18n='buttons.nextProblem')
+            span.glyphicon.glyphicon-refresh.spinning
       #helpDiv
-        p this is the help blablabalb aaaaaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaabvg efg ewf gfwe gwr gr ger rg grw wg
+        p.help(data-i18n="[html]hints.+.1")
     .col-md-2
       #time
         span#minutes

@@ -1,15 +1,16 @@
 extends layout
 
-
-
-block content
-
+block extraJS
   script(type='text/javascript').
     var statData = !{JSON.stringify(stats)}
 
   script(src='//d3js.org/d3.v3.js' charset='utf-8')
   script(src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js")
   script(src='/javascripts/userpage.js', type='text/javascript')
+
+block content
+
+
   .wrapper.col-md-10.col-md-offset-1
     h1= title
 
@@ -17,10 +18,18 @@ block content
 
     a(href='/', data-i18n="buttons.back")
 
-    h2 #{user.username}
+    h1 #{user.username}
     p #{user.firstName} #{user.lastName}
 
-    h3(data-i18n="markup.statistics")
+    .userpageIntro
+      p(data-i18n="[html]markup.userpageIntro.0")
+      p(data-i18n="[html]markup.userpageIntro.1")
+      p(data-i18n="[html]markup.userpageIntro.2")
+      p(data-i18n="[html]markup.userpageIntro.3")
+      p(data-i18n="[html]markup.userpageIntro.4")
+      p(data-i18n="[html]markup.userpageIntro.5")
+
+    h1(data-i18n="markup.statistics")
     #totalStats
 
       #totalAttempts
@@ -43,8 +52,8 @@ block content
     br
     br
     #statButtons
-      p(data-i18n="markup.setTime")
-      .btn-group-justified
+      label(data-i18n="markup.setTime" for="timeButtons")
+      .btn-group-justified#timeButtons
         .btn-group
           button.btn.btn-default.timeSpanBtn
             span.number 7

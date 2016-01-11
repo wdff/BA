@@ -213,6 +213,10 @@ module.exports.makeProblem = function(level) {
 
   problem.clear();
 
+  // IMPORTANT!
+  // Operands with '/' are automatically tested so that the solution is always a clean int
+  // For this to work, the number BEFORE has to be added by addNonPrime();
+
   switch (level) {
   /**
    * 3 + 5
@@ -222,12 +226,12 @@ module.exports.makeProblem = function(level) {
    * [+-]
    * [1-10]
    */
-    case 1:
+    case 1: {
       problem.addOperand('+', 10);
       problem.addOperand(2, 10);
       problem.makePositiveResult();
       return problem.getProblem();
-    break;
+    }
 
 
   /**
@@ -238,11 +242,11 @@ module.exports.makeProblem = function(level) {
    * [+-/*]
    * [1-20]
    */
-    case 2:
-      problem.addOperand('+', 20, 2);
-      problem.addNonPrime(4, 20);
+    case 2: {
+      problem.addNonPrime('+', 50, 2);
+      problem.addOperand(4, 50);
       return problem.getProblem();
-    break;
+    }
 
   /**
    * 75 + 37
@@ -252,12 +256,11 @@ module.exports.makeProblem = function(level) {
    * [+-]
    * [1-100]
    */
-    case 3:
+    case 3: {
       problem.addOperand('+', 100);
       problem.addOperand(2, 100);
-      //problem.makePositiveResult();
       return problem.getProblem();
-    break;
+    }
 
   /**
    * 491 - 318
@@ -267,11 +270,11 @@ module.exports.makeProblem = function(level) {
    * [+-]
    * [1-1000]
    */
-    case 4:
+    case 4: {
       problem.addOperand('+', 1000);
       problem.addOperand(2, 1000);
       return problem.getProblem();
-    break;
+    }
 
   /**
    * 548 + 614 - 245
@@ -283,12 +286,12 @@ module.exports.makeProblem = function(level) {
    * [+-]
    * [1-1000]
    */
-    case 5:
+    case 5: {
       problem.addOperand('+', 1000);
       problem.addOperand(2, 1000);
       problem.addOperand(2, 1000);
       return problem.getProblem();
-    break;
+    }
 
 
   /**
@@ -303,13 +306,13 @@ module.exports.makeProblem = function(level) {
    * [-]
    * [1-200]
    */
-    case 6:
+    case 6: {
       problem.addOperand('+', 20);
       problem.addOperand('*', 20);
       problem.addOperand('+', 200);
       problem.addOperand('-', 200);
       return problem.getProblem();
-    break;
+    }
 
   /**
    * 86 / 12 + 59
@@ -321,12 +324,12 @@ module.exports.makeProblem = function(level) {
    * [+-]
    * [1-100]
    */
-    case 7:
+    case 7: {
       problem.addNonPrime('+',100, 10);
       problem.addOperand('/',100);
       problem.addOperand(2, 100);
       return problem.getProblem();
-    break;
+    }
 
   /**
    * [+]
@@ -338,13 +341,13 @@ module.exports.makeProblem = function(level) {
    * [/]
    * [1-100]
    */
-    case 8:
+    case 8: {
       problem.addNonPrime('+', 1000);
       problem.addOperand('/', 100);
       problem.addNonPrime(2, 1000);
       problem.addOperand('/', 100);
       return problem.getProblem();
-    break;
+    }
 
   /**
    * [+]
@@ -354,12 +357,12 @@ module.exports.makeProblem = function(level) {
    * [+-]
    * [1000-9999]
    */
-    case 9:
+    case 9: {
       problem.addOperand('+', 9999, 1000);
       problem.addOperand(2, 9999, 1000);
       problem.addOperand(2, 9999, 1000);
       return problem.getProblem();
-    break;
+    }
 
 
   /**
@@ -369,45 +372,95 @@ module.exports.makeProblem = function(level) {
    * [sqrt]
    * [9-500]
    */
-    case 10:
+    case 10: {
       problem.addOperand('sqrt', 500, 9);
       problem.addOperand(2, 0);
       problem.addOperand('sqrt', 500, 9);
       return problem.getProblem();
-    break;
+    }
 
 
-    case 11:
+    case 11: {
       problem.addOperand('+', 999999, 100000);
       problem.addOperand(2, 999999, 100000);
       problem.addOperand(2, 999999, 100000);
       return problem.getProblem();
-    break;
+    }
 
-    case 12:
-      problem.addOperand('+',9999,1000);
+    case 12: {
+      problem.addNonPrime('+',9999,1000);
       problem.addOperand('/',9999,1000);
       problem.addOperand('*',9999,1000);
       return problem.getProblem();
-    break;
+    }
 
-    case 13:
-      problem.addOperand('sqrt', 99999);
+    case 13: {
+      problem.addOperand('sqrt', 9999, 1000);
       return problem.getProblem();
-    break;
+    }
 
-    case 14:
-      problem.addOperand('+', 99999);
-      problem.addOperand('*', 99999);
-      problem.addOperand('*', 99999);
+    case 14: {
+      problem.addOperand('+', 99999, 1000);
+      problem.addOperand('*', 99999, 1000);
       return problem.getProblem();
-    break;
+    }
 
-    case 15:
+    case 15: {
       problem.addNonPrime('+', 99999, 10000);
-      problem.addFloat('*', 10, 0, 2);
+      problem.addOperand('/', 9999, 100);
       return problem.getProblem();
-    break;
+    }
+
+    case 16: {
+      problem.addOperand('+', 999, 100);
+      problem.addOperand('*', 999, 100);
+      problem.addOperand('-', 999, 100);
+      problem.addOperand('*', 999, 100);
+      return problem.getProblem();
+    }
+
+    // ====================================    world championship levels
+
+    case 20: {
+      problem.addOperand('+', 9999999999, 1000000000);
+      problem.addOperand('+', 9999999999, 1000000000);
+      problem.addOperand('+', 9999999999, 1000000000);
+      problem.addOperand('+', 9999999999, 1000000000);
+      problem.addOperand('+', 9999999999, 1000000000);
+      problem.addOperand('+', 9999999999, 1000000000);
+      problem.addOperand('+', 9999999999, 1000000000);
+      problem.addOperand('+', 9999999999, 1000000000);
+      problem.addOperand('+', 9999999999, 1000000000);
+      problem.addOperand('+', 9999999999, 1000000000);
+      return problem.getProblem();
+    }
+
+    case 21: {
+      problem.addOperand('+', 99999999, 10000000);
+      problem.addOperand('*', 99999999, 10000000);
+      return problem.getProblem();
+    }
+
+    case 22: {
+      problem.addOperand('sqrt', 999999, 100000);
+      return problem.getProblem();
+    }
+
+    case 23: {
+      problem.addNonPrime('+', 9999999, 1000000);
+      problem.addOperand('/', 999, 100);
+      return problem.getProblem();
+    }
+
+    case 24: {
+      problem.addOperand('+', 99999, 10000);
+      problem.addOperand('*', 99999, 10000);
+      problem.addOperand('-', 99999, 10000);
+      problem.addOperand('*', 99999, 10000);
+      return problem.getProblem();
+    }
+
+
 
 
 

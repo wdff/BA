@@ -1,0 +1,16 @@
+extends ../layout
+block content
+   .wrapper.col-xs-12.col-md-12.col-lg-10.col-lg-offset-1
+      h1= title
+
+      a(href='/tips/', data-i18n="buttons.back")
+      p(data-i18n="markup.tipsHeading")
+
+      block extraJS
+          script(src='/javascripts/tips.js', type='text/javascript')
+
+      include tipsMenu.jade
+
+
+      .tipContent
+        block tipContent

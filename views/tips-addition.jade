@@ -1,0 +1,13 @@
+extends layout
+
+block extraJS
+   script(src='/javascripts/tips.js', type='text/javascript')
+
+block content
+    .wrapper.col-xs-12.col-md-12.col-lg-10.col-lg-offset-1
+        h1= title
+        a(href='/', data-i18n="buttons.back")
+        p(data-i18n="markup.tipsHeading")
+        p(data-i18n="buttons.addition")
+
+        select#hintSelect
